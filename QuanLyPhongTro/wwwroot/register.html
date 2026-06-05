@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập - Quản lý Phòng Trọ</title>
+    <title>Đăng ký - Quản lý Phòng Trọ</title>
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,24 +13,28 @@
             <div class="login-logo">
                 <span class="logo-icon">🏢</span>
                 <h1>Hệ thống Quản lý Phòng Trọ</h1>
-                <p>Đăng nhập để tiếp tục</p>
+                <p>Đăng ký tài khoản mới</p>
             </div>
-            <form id="loginForm" onsubmit="return handleLogin(event)">
+            <form id="registerForm" onsubmit="return handleRegister(event)">
+                <div class="form-group">
+                    <label for="txtHoTen">Họ và tên <span class="required">*</span></label>
+                    <input type="text" id="txtHoTen" class="form-control" placeholder="Nhập họ và tên" required autofocus>
+                </div>
                 <div class="form-group">
                     <label for="txtUsername">Tên đăng nhập <span class="required">*</span></label>
-                    <input type="text" id="txtUsername" class="form-control" placeholder="Nhập tên đăng nhập" required autofocus>
+                    <input type="text" id="txtUsername" class="form-control" placeholder="Nhập tên đăng nhập" required>
                 </div>
                 <div class="form-group">
                     <label for="txtPassword">Mật khẩu <span class="required">*</span></label>
                     <input type="password" id="txtPassword" class="form-control" placeholder="Nhập mật khẩu" required>
                 </div>
-                <div id="loginError" style="display:none; color:#ef4444; font-size:0.85rem; margin-bottom:12px; text-align:center;"></div>
-                <button type="submit" id="btnLogin" class="btn btn-primary btn-block" style="padding:12px;">
-                    🔐 Đăng nhập
+                <div id="registerError" style="display:none; color:#ef4444; font-size:0.85rem; margin-bottom:12px; text-align:center;"></div>
+                <button type="submit" id="btnRegister" class="btn btn-primary btn-block" style="padding:12px;">
+                    📝 Đăng ký
                 </button>
             </form>
             <div style="text-align:center; margin-top:15px; font-size:0.9rem;">
-                Chưa có tài khoản? <a href="register.html" style="color:var(--primary-color); text-decoration:none; font-weight:600;">Đăng ký ngay</a>
+                Đã có tài khoản? <a href="login.html" style="color:var(--primary-color); text-decoration:none; font-weight:600;">Đăng nhập</a>
             </div>
             <div class="login-footer">
                 © 2025 - Đồ án Quản lý phòng trọ
@@ -40,6 +44,6 @@
 
     <div class="toast-container" id="toastContainer"></div>
 
-    <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

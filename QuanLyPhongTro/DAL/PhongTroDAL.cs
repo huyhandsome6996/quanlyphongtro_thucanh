@@ -1,4 +1,6 @@
+using System;
 using System.Data.SQLite;
+using System.Collections.Generic;
 using QuanLyPhongTro.Entities;
 
 namespace QuanLyPhongTro.DAL;
@@ -36,6 +38,10 @@ public class PhongTroDAL : IPhongTroDAL
             }
             return list;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -66,6 +72,10 @@ public class PhongTroDAL : IPhongTroDAL
             }
             return null;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -95,6 +105,10 @@ public class PhongTroDAL : IPhongTroDAL
             command.Parameters.AddWithValue("@TrangThai", p.TrangThai);
             return command.ExecuteNonQuery() > 0;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -117,6 +131,10 @@ public class PhongTroDAL : IPhongTroDAL
             command.Parameters.AddWithValue("@MaPhong", p.MaPhong);
             return command.ExecuteNonQuery() > 0;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -134,6 +152,10 @@ public class PhongTroDAL : IPhongTroDAL
             using var command = new SQLiteCommand(sql, connection);
             command.Parameters.AddWithValue("@MaPhong", maPhong);
             return command.ExecuteNonQuery() > 0;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {
@@ -153,6 +175,10 @@ public class PhongTroDAL : IPhongTroDAL
             command.Parameters.AddWithValue("@TrangThai", trangThai);
             command.Parameters.AddWithValue("@MaPhong", maPhong);
             return command.ExecuteNonQuery() > 0;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {

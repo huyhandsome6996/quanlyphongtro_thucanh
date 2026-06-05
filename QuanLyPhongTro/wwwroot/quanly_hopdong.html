@@ -59,7 +59,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+                    <button id="btnMenu" class="hamburger" onclick="toggleSidebar()">☰</button>
                     <h1 class="page-title">Quản lý Hợp Đồng</h1>
                 </div>
                 <div class="user-info">
@@ -112,7 +112,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="modalTitle">Thêm hợp đồng mới</h3>
-                <button onclick="closeModal()" class="btn-close">&times;</button>
+                <button id="btnCloseModalTop" onclick="closeModal()" class="btn-close">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">

@@ -1,4 +1,6 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using QuanLyPhongTro.DAL;
 using QuanLyPhongTro.Entities;
 

@@ -1,4 +1,6 @@
+using System;
 using System.Data.SQLite;
+using System.Collections.Generic;
 using QuanLyPhongTro.Entities;
 
 namespace QuanLyPhongTro.DAL;
@@ -37,6 +39,10 @@ public class HopDongDAL : IHopDongDAL
             }
             return list;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -68,6 +74,10 @@ public class HopDongDAL : IHopDongDAL
             }
             return null;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -98,6 +108,10 @@ public class HopDongDAL : IHopDongDAL
                 };
             }
             return null;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {
@@ -147,6 +161,10 @@ public class HopDongDAL : IHopDongDAL
                 return false;
             }
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -169,6 +187,10 @@ public class HopDongDAL : IHopDongDAL
             command.Parameters.AddWithValue("@TrangThaiHD", h.TrangThaiHD);
             command.Parameters.AddWithValue("@MaHopDong", h.MaHopDong);
             return command.ExecuteNonQuery() > 0;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {
@@ -215,6 +237,10 @@ public class HopDongDAL : IHopDongDAL
                 transaction.Rollback();
                 return false;
             }
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {

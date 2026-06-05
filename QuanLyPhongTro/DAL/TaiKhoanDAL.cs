@@ -1,3 +1,4 @@
+using System;
 using System.Data.SQLite;
 using System.Security.Cryptography;
 using System.Text;
@@ -51,6 +52,36 @@ public class TaiKhoanDAL : ITaiKhoanDAL
                 };
             }
             return null;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            connection?.Close();
+        }
+    }
+
+    public bool DangKy(TaiKhoan t)
+    {
+        SQLiteConnection? connection = null;
+        try
+        {
+            connection = _dbHelper.GetConnection();
+            connection.Open();
+            string checkSql = "SELECT COUNT(*) FROM TAI_KHOAN WHERE TenDangNhap = @TenDangNhap";
+            using var checkCmd = new SQLiteCommand(checkSql, connection);
+            checkCmd.Parameters.AddWithValue("@TenDangNhap", t.TenDangNhap);
+            if ((long)checkCmd.ExecuteScalar()! > 0) return false;
+
+            string hashedPassword = HashPassword(t.MatKhau);
+            string sql = "INSERT INTO TAI_KHOAN (TenDangNhap, MatKhau, HoTen) VALUES (@TenDangNhap, @MatKhau, @HoTen)";
+            using var command = new SQLiteCommand(sql, connection);
+            command.Parameters.AddWithValue("@TenDangNhap", t.TenDangNhap);
+            command.Parameters.AddWithValue("@MatKhau", hashedPassword);
+            command.Parameters.AddWithValue("@HoTen", t.HoTen);
+            return command.ExecuteNonQuery() > 0;
         }
         finally
         {

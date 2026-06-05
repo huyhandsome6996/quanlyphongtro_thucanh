@@ -1,4 +1,6 @@
+using System;
 using System.Data.SQLite;
+using System.Collections.Generic;
 using QuanLyPhongTro.Entities;
 
 namespace QuanLyPhongTro.DAL;
@@ -35,6 +37,10 @@ public class KhachThueDAL : IKhachThueDAL
             }
             return list;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -63,6 +69,10 @@ public class KhachThueDAL : IKhachThueDAL
                 };
             }
             return null;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {
@@ -97,6 +107,10 @@ public class KhachThueDAL : IKhachThueDAL
             command.Parameters.AddWithValue("@SoDienThoai", k.SoDienThoai);
             return command.ExecuteNonQuery() > 0;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -124,6 +138,10 @@ public class KhachThueDAL : IKhachThueDAL
             command.Parameters.AddWithValue("@MaKhach", k.MaKhach);
             return command.ExecuteNonQuery() > 0;
         }
+        catch (Exception)
+        {
+            throw;
+        }
         finally
         {
             connection?.Close();
@@ -141,6 +159,10 @@ public class KhachThueDAL : IKhachThueDAL
             using var command = new SQLiteCommand(sql, connection);
             command.Parameters.AddWithValue("@MaKhach", maKhach);
             return command.ExecuteNonQuery() > 0;
+        }
+        catch (Exception)
+        {
+            throw;
         }
         finally
         {

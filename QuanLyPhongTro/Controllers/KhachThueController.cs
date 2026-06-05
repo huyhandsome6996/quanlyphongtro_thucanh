@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyPhongTro.DAL;
 using QuanLyPhongTro.Entities;

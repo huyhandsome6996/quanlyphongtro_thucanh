@@ -1,4 +1,11 @@
+using System;
+using System.IO;
+using System.Linq;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using QuanLyPhongTro;
 using QuanLyPhongTro.DAL;
 
 var builder = WebApplication.CreateBuilder(args);

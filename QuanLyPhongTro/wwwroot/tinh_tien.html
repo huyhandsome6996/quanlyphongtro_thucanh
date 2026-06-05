@@ -59,7 +59,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+                    <button id="btnMenu" class="hamburger" onclick="toggleSidebar()">☰</button>
                     <h1 class="page-title">Tính Tiền Điện Nước</h1>
                 </div>
                 <div class="user-info">
@@ -144,7 +144,7 @@
 
                         <div style="margin-top:20px; display:flex; gap:12px;">
                             <button id="btnTinhTien" class="btn btn-primary" onclick="saveInvoice()">💾 Lập hóa đơn</button>
-                            <button class="btn btn-secondary" onclick="resetForm()">🔄 Làm mới</button>
+                            <button id="btnReset" class="btn btn-secondary" onclick="resetForm()">🔄 Làm mới</button>
                         </div>
                     </div>
                 </div>

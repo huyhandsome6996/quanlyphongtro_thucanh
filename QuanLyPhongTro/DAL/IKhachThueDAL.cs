@@ -1,4 +1,5 @@
 using QuanLyPhongTro.Entities;
+using System.Collections.Generic;
 
 namespace QuanLyPhongTro.DAL;
 

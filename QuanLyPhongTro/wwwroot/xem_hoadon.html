@@ -59,7 +59,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+                    <button id="btnMenu" class="hamburger" onclick="toggleSidebar()">☰</button>
                     <h1 class="page-title">Xem Hóa Đơn</h1>
                 </div>
                 <div class="user-info">
@@ -87,7 +87,7 @@
                     </select>
                     <label>Tháng:</label>
                     <input type="text" id="txtThangFilter" class="form-control" placeholder="MM/YYYY" style="width:120px;" oninput="filterInvoices()">
-                    <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Xóa lọc</button>
+                    <button id="btnClearFilter" class="btn btn-secondary btn-sm" onclick="clearFilters()">Xóa lọc</button>
                 </div>
 
                 <div class="table-container">
@@ -123,13 +123,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Chi tiết hóa đơn</h3>
-                <button onclick="closeModal()" class="btn-close">&times;</button>
+                <button id="btnCloseModalTop" onclick="closeModal()" class="btn-close">&times;</button>
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- Filled by JS -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal()">Đóng</button>
+                <button id="btnCloseModal" class="btn btn-secondary" onclick="closeModal()">Đóng</button>
             </div>
         </div>
     </div>
