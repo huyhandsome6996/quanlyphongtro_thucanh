@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Tiền Điện Nước - Quản lý Phòng Trọ</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">🏢</span>
+                <h2>Phòng Trọ</h2>
+                <div class="subtitle">Hệ thống Quản lý</div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-label">Menu chính</div>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Trang chủ</span>
+                </a>
+                <a href="quanly_phong.html" class="nav-item">
+                    <span class="nav-icon">🏢</span>
+                    <span class="nav-text">Quản lý phòng trọ</span>
+                </a>
+                <a href="quanly_khach.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Quản lý khách thuê</span>
+                </a>
+                <a href="quanly_hopdong.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Quản lý hợp đồng</span>
+                </a>
+                <a href="tinh_tien.html" class="nav-item active">
+                    <span class="nav-icon">💡</span>
+                    <span class="nav-text">Tính tiền điện nước</span>
+                </a>
+                <a href="xem_hoadon.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">Xem hóa đơn</span>
+                </a>
+                <div class="nav-label">Tài khoản</div>
+                <a href="#" class="nav-item logout" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    <span class="nav-text">Đăng xuất</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                © 2025 Quản lý phòng trọ
+            </div>
+        </aside>
+
+        <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+                    <h1 class="page-title">Tính Tiền Điện Nước</h1>
+                </div>
+                <div class="user-info">
+                    <span>Xin chào, <strong id="userGreeting">Admin</strong></span>
+                    <div class="user-avatar" id="userAvatar">A</div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <h2>Tính tiền điện nước</h2>
+                </div>
+
+                <div class="table-container" style="max-width:700px;">
+                    <div style="padding:24px;">
+                        <!-- Form -->
+                        <div class="form-group">
+                            <label for="txtMaHoaDon">Mã hóa đơn</label>
+                            <input type="text" id="txtMaHoaDon" class="form-control" placeholder="VD: HD001">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cboHopDong">Hợp đồng <span class="required">*</span></label>
+                            <select id="cboHopDong" class="form-control" onchange="onContractChange()">
+                                <option value="">-- Chọn hợp đồng --</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtGiaThue">Giá thuê phòng</label>
+                            <input type="text" id="txtGiaThue" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtThangNam">Tháng/Năm <span class="required">*</span></label>
+                            <input type="text" id="txtThangNam" class="form-control" placeholder="VD: 01/2025">
+                            <div class="invalid-feedback">Vui lòng nhập tháng/năm đúng định dạng MM/YYYY!</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="txtSoDienCu">Số điện cũ <span class="required">*</span></label>
+                                <input type="number" id="txtSoDienCu" class="form-control" placeholder="VD: 100" min="0" oninput="calculate()">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSoDienMoi">Số điện mới <span class="required">*</span></label>
+                                <input type="number" id="txtSoDienMoi" class="form-control" placeholder="VD: 150" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="txtSoNuocCu">Số nước cũ <span class="required">*</span></label>
+                                <input type="number" id="txtSoNuocCu" class="form-control" placeholder="VD: 20" min="0" oninput="calculate()">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSoNuocMoi">Số nước mới <span class="required">*</span></label>
+                                <input type="number" id="txtSoNuocMoi" class="form-control" placeholder="VD: 30" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+
+                        <!-- Calculation Panel -->
+                        <div class="calc-panel" id="calcPanel">
+                            <h4>📊 Chi tiết tính tiền</h4>
+                            <div class="calc-row">
+                                <span class="calc-label">Tiền điện:</span>
+                                <span class="calc-value" id="lblTienDien">0 đ</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-label">Tiền nước:</span>
+                                <span class="calc-value" id="lblTienNuoc">0 đ</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-label">Tiền phòng:</span>
+                                <span class="calc-value" id="lblTienPhong">0 đ</span>
+                            </div>
+                            <div class="calc-row total">
+                                <span class="calc-label">Tổng cộng:</span>
+                                <span class="calc-value" id="lblTongCong">0 đ</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:20px; display:flex; gap:12px;">
+                            <button id="btnTinhTien" class="btn btn-primary" onclick="saveInvoice()">💾 Lập hóa đơn</button>
+                            <button class="btn btn-secondary" onclick="resetForm()">🔄 Làm mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/tinhtien.js"></script>
+</body>
+</html>

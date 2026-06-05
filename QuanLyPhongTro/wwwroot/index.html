@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Quản lý Phòng Trọ</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">🏢</span>
+                <h2>Phòng Trọ</h2>
+                <div class="subtitle">Hệ thống Quản lý</div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-label">Menu chính</div>
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Trang chủ</span>
+                </a>
+                <a href="quanly_phong.html" class="nav-item">
+                    <span class="nav-icon">🏢</span>
+                    <span class="nav-text">Quản lý phòng trọ</span>
+                </a>
+                <a href="quanly_khach.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Quản lý khách thuê</span>
+                </a>
+                <a href="quanly_hopdong.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Quản lý hợp đồng</span>
+                </a>
+                <a href="tinh_tien.html" class="nav-item">
+                    <span class="nav-icon">💡</span>
+                    <span class="nav-text">Tính tiền điện nước</span>
+                </a>
+                <a href="xem_hoadon.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">Xem hóa đơn</span>
+                </a>
+                <div class="nav-label">Tài khoản</div>
+                <a href="#" class="nav-item logout" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    <span class="nav-text">Đăng xuất</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                © 2025 Quản lý phòng trọ
+            </div>
+        </aside>
+
+        <!-- Sidebar backdrop for mobile -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+                    <h1 class="page-title">Trang chủ</h1>
+                </div>
+                <div class="user-info">
+                    <span>Xin chào, <strong id="userGreeting">Admin</strong></span>
+                    <div class="user-avatar" id="userAvatar">A</div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <div class="stat-card" onclick="location.href='quanly_phong.html'">
+                        <div class="card-icon emerald">🏢</div>
+                        <div class="card-info">
+                            <h3 id="statTotalRooms">0</h3>
+                            <p>Tổng số phòng</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" onclick="location.href='quanly_phong.html'">
+                        <div class="card-icon teal">👥</div>
+                        <div class="card-info">
+                            <h3 id="statOccupiedRooms">0</h3>
+                            <p>Phòng đã thuê</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" onclick="location.href='quanly_phong.html'">
+                        <div class="card-icon blue">🟢</div>
+                        <div class="card-info">
+                            <h3 id="statEmptyRooms">0</h3>
+                            <p>Phòng trống</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" onclick="location.href='quanly_khach.html'">
+                        <div class="card-icon amber">👤</div>
+                        <div class="card-info">
+                            <h3 id="statTotalTenants">0</h3>
+                            <p>Khách thuê</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" onclick="location.href='quanly_hopdong.html'">
+                        <div class="card-icon emerald">📄</div>
+                        <div class="card-info">
+                            <h3 id="statActiveContracts">0</h3>
+                            <p>Hợp đồng hiệu lực</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" onclick="location.href='xem_hoadon.html'">
+                        <div class="card-icon red">💰</div>
+                        <div class="card-info">
+                            <h3 id="statUnpaidInvoices">0</h3>
+                            <p>Hóa đơn chưa TT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Info -->
+                <div class="table-container">
+                    <div style="padding:20px 24px;">
+                        <h2 style="margin-bottom:4px;">👋 Chào mừng bạn!</h2>
+                        <p style="color:var(--text-muted);font-size:0.9rem;">Hệ thống quản lý phòng trọ giúp bạn dễ dàng quản lý phòng, khách thuê, hợp đồng và hóa đơn.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/home.js"></script>
+</body>
+</html>

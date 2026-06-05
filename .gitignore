@@ -1,0 +1,17 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+*.db
+*.db-shm
+*.db-wal
+.vs/
+.vscode/
+
+## Node
+node_modules/
+.next/
+.env
